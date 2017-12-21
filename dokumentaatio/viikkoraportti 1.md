@@ -1,6 +1,6 @@
 ## Mitä tein
 
-Keskiviikkona mietin robotille ideaa. Torstaina lajittelin robotin osat, alustin versionhallinnan ja kirjoitin vaadittavat dokumentit. Aikaa meni yhteensä noin 3 tuntia.
+Tiistaina osallistuin aloitusluennolle ja hain robotin, keskiviikkona mietin robotille ideaa. Torstaina lajittelin robotin osat, alustin versionhallinnan ja kirjoitin vaadittavat dokumentit. Aikaa meni yhteensä noin 3 tuntia.
 
 ## Miten ohjelma on edistynyt
 
