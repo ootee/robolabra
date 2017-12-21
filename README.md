@@ -1,1 +1,3 @@
-# robolabra
+# Robolabra
+
+Robottiohjelmoinnin harjoitustyö, aiheena ninjarobotti
