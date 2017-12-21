@@ -4,7 +4,7 @@ Keskiviikkona mietin robotille ideaa. Torstaina lajittelin robotin osat, alustin
 
 ## Miten ohjelma on edistynyt
 
-Ei ole vielä edistynyt
+Ohjelmointiympäristö on pystyssä.
 
 ## Mitä opin tällä viikolla
 
