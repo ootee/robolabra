@@ -1,6 +1,6 @@
 package org.lejos.robotti;
 
-import lejos.nxt.Motor;
+import lejos.nxt.*;
 import lejos.robotics.RegulatedMotor;
 import lejos.robotics.navigation.DifferentialPilot;
 
@@ -15,11 +15,11 @@ public class Liiku {
 	/**
 	 * Vasemman pyörän halkaisija 5.71, oikean 5.73, raideväli 13.48, mitat cm, moottorin suunta päinvastainen false
 	 * 
-	 * @param vasen 	Vasen moottori (tässä tapauksessa Motor.B)
-	 * @param oikea 	Oikea moottori (tässä tapauksessa Motor.A)
+	 * @param vasen 	Vasen moottori (tässä tapauksessa Motor.C)
+	 * @param oikea 	Oikea moottori (tässä tapauksessa Motor.B)
 	 */
 	public Liiku(RegulatedMotor vasen, RegulatedMotor oikea) {
-		this.pilot = new DifferentialPilot(5.71, 5.73, 13.48, vasen, oikea, false);
+		this.pilot = new DifferentialPilot(5.7, 5.7, 13.48, vasen, oikea, false);
 	}
 			
 	/**
