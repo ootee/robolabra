@@ -39,4 +39,5 @@ tätä myös siirtämällä ultraäänisensorin alemmas, mutta tällä ei ollut 
 
 Yritetään keksiä miksi ultraäänisensori ei tunnista vieressä olevaa kohdetta tai mietitään vaihtoehtoinen keino selvittää, 
 onko robotti kohteen vieressä. Lisätään valosensorin perusteella toimiva kohteen välttely -toiminto ja tehdään testausluokkaan
-liiketestit. Lisäksi eriytetään seuraamis- ja välttelytoiminnot omiin luokkiinsa.
+liiketestit. Lisäksi eriytetään seuraamis- ja välttelytoiminnot omiin luokkiinsa. Hiotaan suunnistusalgoritmia siten, että 
+pidemmällä olevien kohteiden luo liikuttaessa tehdään suunnan korjauksia kesken matkan.
