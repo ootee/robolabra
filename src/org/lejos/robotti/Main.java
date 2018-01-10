@@ -8,39 +8,48 @@ import lejos.util.*;
 
 /**
  * Example leJOS Project with an ant build file
- *
+ * 
  */
 public class Main {
 
 	public static void main(String[] args) {
 		Motor.B.setAcceleration(3000);
 		Motor.C.setAcceleration(3000);
+		
 		Liiku l = new Liiku(Motor.C, Motor.B);
 		Kohteenetsija ke = new Kohteenetsija(l);
 		Kasi kasi = new Kasi();
-		
+
 		LCD.drawString("Valmis", 0, 0);
-		
+
 		l.setNopeus(20);
-		
+
 		l.setKaannosNopeus(45);
-		
+
 		Button.waitForPress();
-		
+
 		Delay.msDelay(1000);
-						
-		Kohde k = ke.etsiKohde();
-			
-		Delay.msDelay(500);
 		
-		if (k.getKulma() > 180) {
-			l.vasen(360 - k.getKulma());
-		} else {
+		while (!Button.ESCAPE.isPressed()) {
+			Kohde k = ke.etsiKohde();
+
+			Delay.msDelay(500);
+
+			if (k.getKulma() > 180) {
+				l.vasen(360 - k.getKulma());
+			} else {
 				l.oikea(k.getKulma());
+			}
+
+			l.eteen(k.getEtaisyys() - 5);
+			
+			int etaisyys = ke.getEdessaOlevanEtaisyys();
+			
+			if (etaisyys < 10) {
+				kasi.heilauta();
+				l.taakse(k.getEtaisyys());
+				break;
+			} else continue; 	
 		}
-					
-		l.eteen(k.getEtaisyys() - 5);
-				
-		kasi.heilauta();
 	}
 }
