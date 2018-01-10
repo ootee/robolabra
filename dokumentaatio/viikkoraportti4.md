@@ -5,7 +5,7 @@ Tiistaina 1 h viime vikkolla havaitun kääntymisongelman pohtimista. Ei johtunu
 Keskiviikkona kääntymisongelman debugaamista. Kokeilin eri kääntymisnopeuksia ilman tulosta. Ongelma kuitenkin ratkesi, joten
 siitä lisää myöhemmin. Lisäksi yritin implementoida alkeellista kohteen seurausrutiinia. Rakenteellisina muutoksina robottiin 
 kääntyvä apupyörä, painopisteen muutos lähemmäs isoja pyöriä kääntymisen helpottamiseksi ja uä-semsorin ja käden 
-kiinnityspisteiden muutos. Videossa on vanha versio. Vertaisarviointi tehty.
+kiinnityspisteiden muutos. Videossa on vanha versio. Vertaisarviointi tehty. 8 h
 
 ## Miten ohjelma on edistynyt
 
