@@ -25,7 +25,7 @@ public class Kasi {
 	 * Heilauttaa kättä ja palauttaa sen alkuasentoon.
 	 */
 	public void heilauta() {
-		m.rotateTo(225);
+		m.rotateTo(-225);
 		Delay.msDelay(0);
 		m.rotateTo(0);
 	}

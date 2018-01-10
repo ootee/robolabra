@@ -13,13 +13,15 @@ public class Liiku {
 	DifferentialPilot pilot;
 	
 	/**
-	 * Vasemman pyörän halkaisija 5.71, oikean 5.73, raideväli 13.48, mitat cm, moottorin suunta päinvastainen false
+	 * Vasemman pyörän halkaisija 5.4, oikean 5.4, raideväli 14.3, mitat cm, moottorin suunta päinvastainen false
+	 * Käytännössä pyörien todellisia halkaisijoita ei voi käyttää, vaan pitää hakea kohdalleen kokeilemalla, koska oikeilla arvoilla käännökset jäävät jostain syystä vajaiksi.
+	 * Tässä tapauksessa pyörien halkaisija ovat pienemmät kuin todellisuudessa. 
 	 * 
 	 * @param vasen 	Vasen moottori (tässä tapauksessa Motor.C)
 	 * @param oikea 	Oikea moottori (tässä tapauksessa Motor.B)
 	 */
 	public Liiku(RegulatedMotor vasen, RegulatedMotor oikea) {
-		this.pilot = new DifferentialPilot(5.7, 5.7, 13.48, vasen, oikea, false);
+		this.pilot = new DifferentialPilot(5.4, 5.4, 14.3, vasen, oikea, false);
 	}
 			
 	/**
