@@ -2,7 +2,7 @@ package org.lejos.robotti;
 
 /**
  * @author lego
- * Luokka tarjoaa kohde-olion, jonka muuttujien avulla robotti voi suunnistaa kohteen luo.
+ * Luokka tarjoaa kohde-olion, jonka muuttujien avulla robotti voi suunnistaa.
  */
 public class Kohde {
 	private int etaisyys;

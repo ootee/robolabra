@@ -7,7 +7,9 @@ import lejos.robotics.objectdetection.FeatureDetector;
 import lejos.robotics.objectdetection.RangeFeatureDetector;
 
 /**
- * @author Olli Luokka sisältää metodit kohteen etsimiseen.
+ * @author Olli
+ * 
+ *         Luokka sisältää metodit kohteen etsimiseen.
  */
 public class Kohteenetsija {
 	private Liiku liiku;
@@ -20,9 +22,9 @@ public class Kohteenetsija {
 	 * @param l
 	 *            Liiku-olio joka liikuttaa robottia kohteen etsinnän aikana.
 	 */
-	public Kohteenetsija(Liiku l) {
+	public Kohteenetsija(Liiku l, UltrasonicSensor us) {
 		this.liiku = l;
-		this.us = new UltrasonicSensor(SensorPort.S2);
+		this.us = us;
 		this.fd = new RangeFeatureDetector(us, MAX_DISTANCE, PERIOD);
 	}
 
@@ -48,18 +50,35 @@ public class Kohteenetsija {
 		return new Kohde(etaisyys, kulma);
 	}
 
+	public Kohde etsiTyhjaTila() {
+		int etaisyys = 0;
+		int kulma = 0;
+		
+		for (int i = 0; i < 18; i++) {
+			Feature result = fd.scan();
+			if (result == null) {
+				etaisyys = 100;
+				kulma = i * 20;
+			}
+			liiku.oikea(20);
+		}
+		return new Kohde(etaisyys, kulma);
+	}
+
 	/**
-	 * Palauttaa suoraan robotin edessä olevan kohteen etäisyyden. Jostain syys ei toimi.
+	 * Kertoo robotille onko kohde lyöntietäisyydellä. Testien perusteella
+	 * ultraäänisensori ei tunnista alle 10 cm etäisyyksiä kovin luotettavasti.
 	 * 
-	 * @return		kohteen etäisyys 
+	 * @return TRUE, jos kohde on alle 15 cm päässä, muuten FALSE
 	 */
-	public int getEdessaOlevanEtaisyys() {
+	public boolean onkoKohdeLyontietaisyydella() {
 		Feature result = fd.scan();
 		if (result != null) {
-			return (int) result.getRangeReading().getRange();
-		} else {
-			return Integer.MAX_VALUE;
+			if (result.getRangeReading().getRange() < 15) {
+				return true;
+			}
 		}
+		return false;
 	}
 
 }
