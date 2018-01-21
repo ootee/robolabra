@@ -1,4 +1,4 @@
-## Käyttöohje
+# Käyttöohje
 
 Kytke NXT-palikkaan virta ja aja Main.nxj. Kun ruudussa lukee valmis, robotti aloittaa toimintansa minkä tahansa näppäimen 
 painalluksella. Käynnistettäessä robotti alkaa toimia vallitsevan valistuksen mukaisesti, joko välttelemällä kohteita tai 
