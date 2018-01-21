@@ -8,67 +8,55 @@ import lejos.robotics.objectdetection.RangeFeatureDetector;
 import lejos.util.*;
 
 /**
- * Example leJOS Project with an ant build file
+ * Ninjarobotti, joka etsii kohteen pimeällä ja välttelee valoisalla.
  * 
  */
 public class Main {
 
 	public static void main(String[] args) {
-		UltrasonicSensor us = new UltrasonicSensor(SensorPort.S2);	
+//		Alustetaan sensorit
+		
+		UltrasonicSensor us = new UltrasonicSensor(SensorPort.S2);
+		LightSensor ls = new LightSensor(SensorPort.S1);
+
+//		Luodaan robotin ohjaamiseen tarvittavat oliot
 		
 		Liiku l = new Liiku(Motor.C, Motor.B);
 		Kohteenetsija ke = new Kohteenetsija(l, us);
 		Kasi kasi = new Kasi();
+		Toiminta toiminta = new Toiminta(ke, l, kasi, ls);
+		
+//		Kytketään valoisuussensorin valo pois päältä
+		
+		ls.setFloodlight(false);
+
+//		Hidastetaan moottorien kiihtyvyys puoleen
 		
 		Motor.B.setAcceleration(3000);
 		Motor.C.setAcceleration(3000);
+
+//		Asetetaan uä-sensorin toimintatila jatkuvaksi
 		
 		us.setMode(2);
+
+//		Asetetaan robotin liikkumis- ja käännösnopeudet
 		
 		l.setNopeus(20);
 
-		l.setKaannosNopeus(45);	
+		l.setKaannosNopeus(45);
+
+//		Tulostetaan näytölle valmiusteksti ja valoisuusanturin lukema
 		
 		LCD.drawString("Valmis", 0, 0);
+		
+		LCD.drawInt(ls.getLightValue(), 0, 1);
+
+//		Odotetaan napin painallusta robotin käynnistämiseksi
 		
 		Button.waitForPress();
 
 		Delay.msDelay(1000);
 		
-		//Etsintämoodi
-		
-//		while (!Button.ESCAPE.isPressed()) {
-//			Kohde k = ke.etsiKohde();
-//
-//			if (k.getKulma() > 180) {
-//				l.vasen(360 - k.getKulma());
-//			} else {
-//				l.oikea(k.getKulma());
-//			}
-//
-//			l.eteen(k.getEtaisyys() - 5);
-//			
-//			if (ke.onkoKohdeLyontietaisyydella()) {
-//				kasi.heilauta();
-//				l.taakse(k.getEtaisyys() - 5);
-//				break;
-//			} 
-//		}
-		
-		//Välttelymoodi
-		
-		while (!Button.ESCAPE.isPressed()) {
-			Kohde k = ke.etsiTyhjaTila();
-			
-			if (k.getKulma() > 180) {
-				l.vasen(360 - k.getKulma());
-			} else {
-				l.oikea(k.getKulma());
-			}
-			
-			l.eteen(k.getEtaisyys());
-						
-		}
-		
+		toiminta.toimi();
 	}
 }

@@ -9,7 +9,7 @@ import lejos.robotics.objectdetection.RangeFeatureDetector;
 /**
  * @author Olli
  * 
- *         Luokka sisältää metodit kohteen etsimiseen.
+ * Luokka sisältää metodit kohteen etsimiseen.
  */
 public class Kohteenetsija {
 	private Liiku liiku;
@@ -19,8 +19,7 @@ public class Kohteenetsija {
 	private FeatureDetector fd;
 
 	/**
-	 * @param l
-	 *            Liiku-olio joka liikuttaa robottia kohteen etsinnän aikana.
+	 * @param l 	Liiku-olio joka liikuttaa robottia kohteen etsinnän aikana.
 	 */
 	public Kohteenetsija(Liiku l, UltrasonicSensor us) {
 		this.liiku = l;
@@ -50,19 +49,29 @@ public class Kohteenetsija {
 		return new Kohde(etaisyys, kulma);
 	}
 
-	public Kohde etsiTyhjaTila() {
-		int etaisyys = 0;
-		int kulma = 0;
+	/**
+	 * Etsii robotin ympäriltä tyhjän tilan, mistä uä-sensori ei tunnista yhtään kohdetta.
+	 */
+	public void etsiTyhjaTila() {
+		int havainnot = 0;
 		
 		for (int i = 0; i < 18; i++) {
 			Feature result = fd.scan();
 			if (result == null) {
-				etaisyys = 100;
-				kulma = i * 20;
+				havainnot++;
+			} else {
+				havainnot = 0;
 			}
+			
+			if (havainnot == 3) {
+				havainnot = 0;
+				break;
+			}
+			
 			liiku.oikea(20);
 		}
-		return new Kohde(etaisyys, kulma);
+		liiku.vasen(20);
+		liiku.eteen(50);
 	}
 
 	/**

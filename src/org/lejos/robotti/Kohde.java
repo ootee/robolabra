@@ -1,7 +1,7 @@
 package org.lejos.robotti;
 
 /**
- * @author lego
+ * @author Olli
  * Luokka tarjoaa kohde-olion, jonka muuttujien avulla robotti voi suunnistaa.
  */
 public class Kohde {

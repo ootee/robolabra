@@ -5,7 +5,7 @@ import lejos.nxt.NXTRegulatedMotor;
 import lejos.util.Delay;
 
 /**
- * @author lego
+ * @author Olli
  * Luokka tarjoaa toiminnot robotin käden hallintaan.
  */
 public class Kasi {
